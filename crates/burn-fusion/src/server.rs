@@ -120,7 +120,7 @@ where
 
         let instant = std::time::Instant::now();
         let tensor = B::float_to_device(tensor_float, device);
-        log::info!("Change to device in fusion time {}", instant.elapsed());
+        log::info!("Change to device in fusion time {:?}", instant.elapsed());
         let id = server_device.create_empty_handle();
 
         server_device

@@ -118,7 +118,9 @@ where
         let tensor_float = self.handles.get_float_tensor::<B>(tensor);
         self.streams.mark_read(stream_tensor, tensor, &self.handles);
 
+        let instant = std::time::Instant::now();
         let tensor = B::float_to_device(tensor_float, device);
+        log::info!("Change to device in fusion time {}", instant.elapsed());
         let id = server_device.create_empty_handle();
 
         server_device

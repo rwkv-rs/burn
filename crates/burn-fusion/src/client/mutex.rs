@@ -130,9 +130,9 @@ where
         B: FusionBackend<FusionRuntime = R>,
     {
         let mut server_current = self.server.lock();
+        let mut server_other = client.server.lock();
         server_current.drain_stream(stream);
 
-        let mut server_other = client.server.lock();
         let id = server_current.change_server_float::<B>(
             &tensor,
             stream,
@@ -156,9 +156,9 @@ where
         B: FusionBackend<FusionRuntime = R>,
     {
         let mut server_current = self.server.lock();
+        let mut server_other = client.server.lock();
         server_current.drain_stream(stream);
 
-        let mut server_other = client.server.lock();
         let id = server_current.change_server_int::<B>(
             &tensor,
             stream,
@@ -182,9 +182,9 @@ where
         B: FusionBackend<FusionRuntime = R>,
     {
         let mut server_current = self.server.lock();
+        let mut server_other = client.server.lock();
         server_current.drain_stream(stream);
 
-        let mut server_other = client.server.lock();
         let id = server_current.change_server_bool::<B>(
             &tensor,
             stream,
@@ -208,9 +208,9 @@ where
         B: FusionBackend<FusionRuntime = R>,
     {
         let mut server_current = self.server.lock();
+        let mut server_other = client.server.lock();
         server_current.drain_stream(stream);
 
-        let mut server_other = client.server.lock();
         let id =
             server_current.change_server_quantized::<B>(&tensor, &client.device, &mut server_other);
 
